@@ -93,28 +93,25 @@ services:
     volumes:
       - fleet_data:/var/lib/postgresql/data
 
-  # Telemetría
-  telemetry:
-    build: ./microservices/telemetry
-    container_name: telemetry_service
-    ports:
-      - "3005:3000"
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@telemetry_db:5432/telemetry_db
-    depends_on:
-      - telemetry_db
+# Telemetría
+telemetry:
+  build: ./microservices/telemetry
+  container_name: telemetry_service
+  ports:
+    - "3005:3000"
+  environment:
+    - DATABASE_URL=mongodb://mongo:27017/telemetry_db
+  depends_on:
+    - mongo
 
-  telemetry_db:
-    image: postgres:15
-    container_name: telemetry_db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: telemetry_db
-    ports:
-      - "5437:5432"
-    volumes:
-      - telemetry_data:/var/lib/postgresql/data
+mongo:
+  image: mongo:6
+  container_name: telemetry_mongo
+  ports:
+    - "27018:27017"
+  volumes:
+    - telemetry_data:/data/db
+
 
   # Pagos y Recargas
   payments:
