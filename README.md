@@ -51,13 +51,13 @@ docker ps
 ```
 3. Acceder a los endpoints expuestos (por ejemplo):
 
-    Auth: http://localhost:3001
+    Auth: http://localhost:3000
 
-    Users: http://localhost:3002
+    Users: http://localhost:3001
 
     Drivers: http://localhost:3003
 
-    Telemetry: http://localhost:3004
+    Telemetry: http://localhost:3002
 
     Para detener los servicios:
     ```bash
