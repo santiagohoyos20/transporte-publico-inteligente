@@ -76,7 +76,45 @@ services:
       - app-network
 
 
+  # TELEMETRY SERVICE
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGO_INITDB_DATABASE: telemetry
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - app-network
 
+  telemetry:
+    build:
+      context: .
+      dockerfile: Dockerfile.telemetry
+    container_name: telemetry
+    restart: unless-stopped
+    environment:
+      - MONGODB_URI=mongodb://admin:pass@mongodb:27017/telemetry?authSource=admin
+      - PORT=3002
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - "3002:3002"
+      - "50052:50052"
+    command: npm run start:dev
+    networks:
+      - app-network
+  
 networks:
   app-network:
     driver: bridge
