@@ -69,7 +69,7 @@ services:
       db_users:
         condition: service_healthy
     ports:
-      - "3001:3001"
+      - "3001:3000"
       - "50051:50051"
     command: sh -c "npx prisma migrate deploy && npm run start:dev"
     networks:
