@@ -1,4 +1,17 @@
 services:
+  gateway:
+    build: ./gateway
+    container_name: api-gateway
+    ports:
+      - 80:80
+    depends_on:
+      - auth
+      - drivers
+      - users
+      - telemetry
+    networks:
+      - app-network
+      
   db_auth:
     image: postgres:16
     container_name: db_auth
@@ -28,8 +41,8 @@ services:
     environment:
       DATABASE_URL: "postgresql://user:pass@db_auth:5432/auth"
       JWT_SECRET: "if-at-first-you-don't-succeed-dust-yourself-off-and-try-again"
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     command: sh -c "npx prisma migrate deploy && npx ts-node prisma/seed.ts && npm run start:dev"
     networks:
       - app-network
