@@ -31,6 +31,9 @@ De esta manera, se reduce la incertidumbre de los pasajeros, se mejora la eficie
 - **Backend:** NestJS
 - **Bases de datos:** PostgreSQL y MongoDB
 
+### Arquitectura del sistema
+
+![Arquitectura de QuillaBus](docs/arquitectura.png)
 
 ## ¿Cómo correrlo?
 
