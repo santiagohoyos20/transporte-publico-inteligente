@@ -35,48 +35,28 @@ De esta manera, se reduce la incertidumbre de los pasajeros, se mejora la eficie
 
 <img src="docs/arquitectura.png" alt="Arquitectura de QuillaBus" width="50%">
 
-
-## ¿Cómo correrlo?
-
-###  1️⃣ Ejecución con Docker Compose
-
-Esta es la forma más sencilla de levantar todo el entorno localmente.
+## Ejecución
 
 ###  Requisitos previos
 - Tener instalado **Docker Desktop**
-- Asegurarte de que ningún servicio use los puertos definidos (por ejemplo, `5432`, `3000`, etc.)
 
-### ▶️ Pasos
+### Pasos para ejecutar el backend de QuillaBus
 
 1. Clonar este repositorio:
+   
    ```bash
-   git clone https://github.com/santiagohoyos20/transporte-publico-inteligente.git
-   cd transporte-publico-inteligente
-
-2. Crear los archivos .env requeridos por los microservicios (si no existen):
-```bash
-cp .env.example .env
-
-Levantar los servicios con:
-
-docker compose up --build
-
-
-Verificar que todos los contenedores estén corriendo:
-
-docker ps
-```
-3. Acceder a los endpoints expuestos (por ejemplo):
-
-    Auth: http://localhost:3000
-
-    Users: http://localhost:3001
-
-    Drivers: http://localhost:3003
-
-    Telemetry: http://localhost:3002
-
-    Para detener los servicios:
+   git clone https://github.com/santiagohoyos20/QuillaBus
+   cd QuillaBus
+   ```
+   
+2. Levantar los servicios con Docker Compose:
+   
     ```bash
-    docker compose down
+    docker compose up
+    ```
+3. Revisar la documentación Swagger:
+
+    ```bash
+    http://localhost:80/auth/api/docs
+    http://localhost:80/telemetry/api/docs
     ```
