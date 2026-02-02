@@ -33,7 +33,8 @@ De esta manera, se reduce la incertidumbre de los pasajeros, se mejora la eficie
 
 ### Arquitectura del sistema
 
-![Arquitectura de QuillaBus](docs/arquitectura.png)
+<img src="docs/arquitectura.png" alt="Arquitectura de QuillaBus" width="50%">
+
 
 ## ¿Cómo correrlo?
 
