@@ -26,6 +26,11 @@ De esta manera, se reduce la incertidumbre de los pasajeros, se mejora la eficie
 - [Microservicio de Pagos y Recargas](https://github.com/santiagohoyos20/Microservicio-de-pagos-y-recargas)
 - [Microservicio de Reportes y Analítica](https://github.com/santiagohoyos20/Microservicio-de-reportes-y-analitica)
 
+### Tecnologías utilizadas
+- **Frontend:** React y React Native
+- **Backend:** NestJS
+- **Bases de datos:** PostgreSQL y MongoDB
+
 
 ## ¿Cómo correrlo?
 
