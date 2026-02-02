@@ -13,7 +13,7 @@ Los conductores pueden registrar sus vehículos y activar el seguimiento de sus 
 De esta manera, se reduce la incertidumbre de los pasajeros, se mejora la eficiencia del sistema y se fortalece la confianza en el transporte público.
 
 
-### Fronted
+### Frontend
 - [Drivers app](https://github.com/santiagohoyos20/drivers)
 - [Users app](https://github.com/santiagohoyos20/users)
 
