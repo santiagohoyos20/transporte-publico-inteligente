@@ -1,13 +1,18 @@
-## Transporte Público Inteligente
+## QuillaBus
 
-Plataforma que gestiona una flota de buses inteligentes. Los usuarios consultan tiempos de 
-llegada (ETA) en tiempo real y recargan tarjetas electrónicas. Cada bus dispone de un 
-dispositivo embarcado (Bus Device) y un Sidecar que envían telemetría y logs a la nube. El 
-sistema integra APIs externas (como GPS) a través de un Ambassador Proxy para garantizar 
-solidez.
+### Problema
+- Largos tiempos de espera para los pasajeros del transporte público, lo que genera inseguridad, frustración e incertidumbre.
 
-Objetivo: Ofrecer a pasajeros y operadores información en tiempo real sobre ubicaciones, 
-tiempos de llegada y estado operativo de la flota, además de permitir recargas electrónicas. 
+- Conductores y administradores no cuentan con herramientas para monitorear la flota en tiempo real, provocando ineficiencia operativa y desorganización en las rutas.
+
+### Solución
+QuillaBus es una aplicación de transporte público inteligente que ofrece rastreo en tiempo real de los buses, permitiendo a los usuarios conocer la ubicación exacta del vehículo, su ruta y el tiempo estimado de llegada.
+
+Los conductores pueden registrar sus vehículos y activar el seguimiento de sus recorridos, facilitando la supervisión y gestión de la flota.
+
+De esta manera, se reduce la incertidumbre de los pasajeros, se mejora la eficiencia del sistema y se fortalece la confianza en el transporte público.
+
+
 ### Fronted
 - [Drivers app](https://github.com/santiagohoyos20/drivers)
 - [Users app](https://github.com/santiagohoyos20/users)
@@ -66,38 +71,3 @@ docker ps
     ```bash
     docker compose down
     ```
-
-
-
-##  Opción 2: Ejecutar con Kubernetes
-
-### 1️⃣ Crear las imágenes manualmente
-
-Ejecuta desde cada carpeta de microservicio (por ejemplo `auth/`):
-
-```bash
-docker build -t auth -f Dockerfile.auth .
-docker build -t drivers -f Dockerfile.drivers .
-docker build -t telemetry -f Dockerfile.telemetry .
-docker build -t users -f Dockerfile.users .
-```
-
-### 2️⃣ Crear los pods y servicios en Kubernetes
-
-En la carpeta raíz (donde está la carpeta `k8s/`):
-
-```bash
-kubectl apply -f k8s/
-```
-
-Esto creará los `Deployments` y `Services` necesarios para cada microservicio.
-
-### 3️⃣ Verificar el estado
-
-```bash
-kubectl get pods
-kubectl get services
-```
-
-Cuando los pods estén en estado **Running**, los servicios estarán accesibles en los puertos configurados.
-
